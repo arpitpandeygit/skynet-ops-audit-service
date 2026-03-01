@@ -1,0 +1,42 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - dev
+      - staging
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/skynet-ops-audit-service-${{ github.ref_name }}-github-actions-role
+          aws-region: us-east-1
+
+      - name: Login to ECR
+        run: |
+          aws ecr get-login-password --region us-east-1 | \
+          docker login --username AWS --password-stdin \
+          ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com
+
+      - name: Build & Push Image
+        run: |
+          IMAGE=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/skynet-ops-audit-service-${{ github.ref_name }}:latest
+          docker buildx build --platform linux/amd64 --provenance=false -t $IMAGE --push .
+
+      - name: Deploy Infra
+        run: |
+          cd infra/terraform/envs/${{ github.ref_name }}
+          terraform init
+          terraform apply -auto-approve -var-file=terraform.tfvars

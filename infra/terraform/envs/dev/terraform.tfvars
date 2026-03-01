@@ -1,0 +1,12 @@
+aws_region       = "us-east-1"
+project_name     = "skynet-ops-audit-service"
+environment      = "dev"
+budget_limit_usd = 50
+alert_email      = "arpitxid@gmail.com"
+log_retention_days        = 3
+lambda_reserved_concurrency = 2
+lambda_error_threshold    = 10
+lambda_duration_threshold = 5000
+api_rate_limit            = 100
+api_burst_limit           = 200
+enable_deletion_protection = false

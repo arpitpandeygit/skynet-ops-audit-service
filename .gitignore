@@ -1,0 +1,71 @@
+#################################
+# Node.js
+#################################
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+dist/
+build/
+.env
+.env.*
+coverage/
+
+#################################
+# Logs
+#################################
+logs/
+*.log
+
+#################################
+# OS Files
+#################################
+.DS_Store
+Thumbs.db
+
+#################################
+# Docker
+#################################
+.dockerignore
+
+#################################
+# Terraform (CRITICAL)
+#################################
+
+# Local state files
+*.tfstate
+*.tfstate.*
+crash.log
+
+# Terraform directories
+.terraform/
+.terraform.lock.hcl
+
+# Backend override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Variable files with secrets
+*.auto.tfvars
+*.auto.tfvars.json
+
+#################################
+# Terraform env state backups
+#################################
+infra/terraform/envs/**/terraform.tfstate
+infra/terraform/envs/**/terraform.tfstate.backup
+
+#################################
+# IDE
+#################################
+.vscode/
+.idea/
+
+#################################
+# Mac/Linux temporary
+#################################
+*.swp
+*.swo
