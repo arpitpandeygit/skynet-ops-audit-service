@@ -18,10 +18,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set Environment Name
+        id: set-env
+        run: |
+          if [[ "${GITHUB_REF_NAME}" == "main" ]]; then
+            echo "ENV=prod" >> $GITHUB_OUTPUT
+          else
+            echo "ENV=${GITHUB_REF_NAME}" >> $GITHUB_OUTPUT
+          fi
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/skynet-ops-audit-service-${{ github.ref_name }}-github-actions-role
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/skynet-ops-audit-service-${{ steps.set-env.outputs.ENV }}-github-actions-role
           aws-region: us-east-1
 
       - name: Login to ECR
@@ -32,11 +41,11 @@ jobs:
 
       - name: Build & Push Image
         run: |
-          IMAGE=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/skynet-ops-audit-service-${{ github.ref_name }}:latest
+          IMAGE=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/skynet-ops-audit-service-${{ steps.set-env.outputs.ENV }}:latest
           docker buildx build --platform linux/amd64 --provenance=false -t $IMAGE --push .
 
       - name: Deploy Infra
         run: |
-          cd infra/terraform/envs/${{ github.ref_name }}
+          cd infra/terraform/envs/${{ steps.set-env.outputs.ENV }}
           terraform init
           terraform apply -auto-approve -var-file=terraform.tfvars
