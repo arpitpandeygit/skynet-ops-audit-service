@@ -5,12 +5,16 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
 dist/
 build/
+coverage/
+
+#################################
+# Environment Variables
+#################################
 .env
 .env.*
-coverage/
+!.env.example
 
 #################################
 # Logs
@@ -33,14 +37,17 @@ Thumbs.db
 # Terraform (CRITICAL)
 #################################
 
-# Local state files
+# Local state files (NEVER COMMIT)
 *.tfstate
 *.tfstate.*
 crash.log
 
 # Terraform directories
 .terraform/
-.terraform.lock.hcl
+
+# Keep lock file for reproducibility
+# (DO NOT ignore this in production)
+# .terraform.lock.hcl  <-- intentionally NOT ignored
 
 # Backend override files
 override.tf
@@ -48,7 +55,7 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 
-# Variable files with secrets
+# Variable files that may contain secrets
 *.auto.tfvars
 *.auto.tfvars.json
 

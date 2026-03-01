@@ -1,0 +1,264 @@
+[
+  {
+    "type": "roster_update",
+    "tenantId": "academy_001",
+    "severity": "info",
+    "message": "Instructor schedule adjusted for morning slot",
+    "source": "skynet-api",
+    "metadata": {
+      "instructorId": "ins_014",
+      "studentCountAffected": 3,
+      "updatedBy": "ops_admin"
+    },
+    "occurredAt": "2026-02-24T04:45:12Z"
+  },
+  {
+    "type": "schedule_conflict",
+    "tenantId": "academy_001",
+    "severity": "warning",
+    "message": "Aircraft VT-ABX double-booked between 08:00 and 09:00 UTC",
+    "source": "skynet-scheduler",
+    "metadata": {
+      "aircraftReg": "VT-ABX",
+      "conflictingBookings": 2,
+      "slot": "08:00-09:00"
+    },
+    "occurredAt": "2026-02-24T05:02:41Z"
+  },
+  {
+    "type": "dispatch_approved",
+    "tenantId": "academy_002",
+    "severity": "info",
+    "message": "Dispatch approved for student solo circuit sortie",
+    "source": "skynet-dispatch",
+    "metadata": {
+      "dispatchId": "dsp_10021",
+      "studentId": "std_221",
+      "instructorId": "ins_033"
+    },
+    "occurredAt": "2026-02-24T05:15:03Z"
+  },
+  {
+    "type": "dispatch_rejected",
+    "tenantId": "academy_002",
+    "severity": "warning",
+    "message": "Dispatch rejected due to missing pre-flight documentation",
+    "source": "skynet-dispatch",
+    "metadata": {
+      "dispatchId": "dsp_10022",
+      "reasonCode": "MISSING_DOCS",
+      "studentId": "std_109"
+    },
+    "occurredAt": "2026-02-24T05:21:44Z"
+  },
+  {
+    "type": "student_progress_updated",
+    "tenantId": "academy_001",
+    "severity": "info",
+    "message": "CPL student stage progress updated after instructor assessment",
+    "source": "skynet-training",
+    "metadata": {
+      "studentId": "std_045",
+      "course": "CPL Integrated",
+      "newStage": "Stage-2",
+      "previousStage": "Stage-1"
+    },
+    "occurredAt": "2026-02-24T06:01:27Z"
+  },
+  {
+    "type": "student_stage_check_due",
+    "tenantId": "academy_003",
+    "severity": "warning",
+    "message": "Stage check due within 48 hours for student batch B3",
+    "source": "skynet-training",
+    "metadata": {
+      "batchId": "B3",
+      "studentsDue": 7,
+      "deadline": "2026-02-26T06:00:00Z"
+    },
+    "occurredAt": "2026-02-24T06:12:19Z"
+  },
+  {
+    "type": "instructor_assignment_changed",
+    "tenantId": "academy_001",
+    "severity": "info",
+    "message": "Instructor reassigned to instrument training slot",
+    "source": "skynet-scheduler",
+    "metadata": {
+      "oldInstructorId": "ins_014",
+      "newInstructorId": "ins_019",
+      "trainingType": "Instrument",
+      "slotId": "slot_7781"
+    },
+    "occurredAt": "2026-02-24T06:40:55Z"
+  },
+  {
+    "type": "aircraft_slot_reassigned",
+    "tenantId": "academy_003",
+    "severity": "warning",
+    "message": "Aircraft slot reassigned due to maintenance hold on primary aircraft",
+    "source": "skynet-ops",
+    "metadata": {
+      "oldAircraftReg": "VT-KLM",
+      "newAircraftReg": "VT-KLN",
+      "reasonCode": "MX_HOLD"
+    },
+    "occurredAt": "2026-02-24T07:03:08Z"
+  },
+  {
+    "type": "compliance_document_flagged",
+    "tenantId": "academy_002",
+    "severity": "warning",
+    "message": "Medical certificate expiry approaching for active student",
+    "source": "skynet-compliance",
+    "metadata": {
+      "studentId": "std_182",
+      "documentType": "Class 1 Medical",
+      "expiryDate": "2026-03-05"
+    },
+    "occurredAt": "2026-02-24T07:18:31Z"
+  },
+  {
+    "type": "maintenance_grounding_alert",
+    "tenantId": "academy_001",
+    "severity": "critical",
+    "message": "Aircraft grounded due to unresolved snag reported after landing",
+    "source": "skynet-maintenance",
+    "metadata": {
+      "aircraftReg": "VT-ABX",
+      "snagId": "snag_9091",
+      "category": "Flight Safety"
+    },
+    "occurredAt": "2026-02-24T07:44:22Z"
+  },
+  {
+    "type": "weather_hold_notice",
+    "tenantId": "academy_003",
+    "severity": "warning",
+    "message": "Training flights paused due to crosswind exceeding local limits",
+    "source": "skynet-ops",
+    "metadata": {
+      "station": "VOMM",
+      "crosswindKt": 21,
+      "limitKt": 18
+    },
+    "occurredAt": "2026-02-24T08:02:10Z"
+  },
+  {
+    "type": "ops_login_failure",
+    "tenantId": "academy_001",
+    "severity": "error",
+    "message": "Multiple failed login attempts detected for ops dashboard account",
+    "source": "skynet-auth",
+    "metadata": {
+      "username": "ops.supervisor@academy001.example",
+      "attemptCount": 6,
+      "ipHash": "iphash_01A8"
+    },
+    "occurredAt": "2026-02-24T08:15:49Z"
+  },
+  {
+    "type": "tenant_config_changed",
+    "tenantId": "academy_002",
+    "severity": "info",
+    "message": "Tenant notification preferences updated by admin",
+    "source": "skynet-api",
+    "metadata": {
+      "updatedBy": "admin_22",
+      "changedKeys": ["emailAlerts", "smsAlerts"]
+    },
+    "occurredAt": "2026-02-24T08:28:02Z"
+  },
+  {
+    "type": "dispatch_approved",
+    "tenantId": "academy_001",
+    "severity": "info",
+    "message": "Dispatch approved for dual navigation sortie",
+    "source": "skynet-dispatch",
+    "metadata": {
+      "dispatchId": "dsp_10041",
+      "studentId": "std_051",
+      "instructorId": "ins_019",
+      "route": "VOMM-VOTX-VOMM"
+    },
+    "occurredAt": "2026-02-24T08:40:37Z"
+  },
+  {
+    "type": "schedule_conflict",
+    "tenantId": "academy_002",
+    "severity": "warning",
+    "message": "Instructor assigned to overlapping simulator and classroom sessions",
+    "source": "skynet-scheduler",
+    "metadata": {
+      "instructorId": "ins_040",
+      "overlapMinutes": 45,
+      "conflictCount": 1
+    },
+    "occurredAt": "2026-02-24T09:05:13Z"
+  },
+  {
+    "type": "student_progress_updated",
+    "tenantId": "academy_003",
+    "severity": "info",
+    "message": "ATPL theory progress recorded after exam prep module completion",
+    "source": "skynet-training",
+    "metadata": {
+      "studentId": "std_301",
+      "subject": "Meteorology",
+      "completionPercent": 82
+    },
+    "occurredAt": "2026-02-24T09:31:58Z"
+  },
+  {
+    "type": "compliance_document_flagged",
+    "tenantId": "academy_001",
+    "severity": "error",
+    "message": "Instructor license validation failed during roster publish",
+    "source": "skynet-compliance",
+    "metadata": {
+      "instructorId": "ins_014",
+      "documentType": "Instructor Rating",
+      "reasonCode": "VALIDATION_FAILED"
+    },
+    "occurredAt": "2026-02-24T10:02:44Z"
+  },
+  {
+    "type": "ops_login_failure",
+    "tenantId": "academy_002",
+    "severity": "critical",
+    "message": "Repeated failed admin login attempts triggered temporary account lock",
+    "source": "skynet-auth",
+    "metadata": {
+      "username": "chief.ops@academy002.example",
+      "attemptCount": 12,
+      "lockDurationMinutes": 30
+    },
+    "occurredAt": "2026-02-24T11:03:54Z"
+  },
+  {
+    "type": "roster_update",
+    "tenantId": "academy_003",
+    "severity": "info",
+    "message": "Roster published for next day after instructor availability sync",
+    "source": "skynet-scheduler",
+    "metadata": {
+      "date": "2026-02-25",
+      "publishedBy": "ops_admin",
+      "slotsPublished": 28
+    },
+    "occurredAt": "2026-02-24T11:26:39Z"
+  },
+  {
+    "type": "dispatch_rejected",
+    "tenantId": "academy_001",
+    "severity": "error",
+    "message": "Dispatch rejected due to aircraft document mismatch",
+    "source": "skynet-dispatch",
+    "metadata": {
+      "dispatchId": "dsp_10057",
+      "aircraftReg": "VT-ABX",
+      "reasonCode": "AIRCRAFT_DOC_MISMATCH"
+    },
+    "occurredAt": "2026-02-24T11:44:11Z"
+  }
+]
